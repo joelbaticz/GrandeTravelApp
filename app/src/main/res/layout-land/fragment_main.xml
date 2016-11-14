@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/menubackground"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -12,9 +14,151 @@
         android:background="@color/separatoryellow">
     </LinearLayout>
 
-    <ListView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lvPackageList" />
+       >
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lvPackageList"
+            android:visibility="visible"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:visibility="gone"
+            android:id="@+id/contactsView"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:text="Contact Us"
+
+                android:textColor="@color/white"
+                android:textSize="30dp"
+
+                android:textStyle="italic"
+                />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textViewAddress"
+                    android:text="&#xf041;"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:textStyle="italic"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 Water st, The Rocks, 2000, NSW, Australia"
+                    android:textColor="#c0c0c0"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textViewPhone"
+                    android:text="&#xf10b;"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="italic"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(02) 1212-1414"
+                    android:textColor="#c0c0c0"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textViewEmail"
+                    android:text="&#xf0e0;"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="admin@grandetravel.com"
+                    android:textColor="#c0c0c0"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textViewHours"
+                    android:text="&#xf017;"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:textStyle="italic"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8am-8pm"
+                    android:textColor="#c0c0c0"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

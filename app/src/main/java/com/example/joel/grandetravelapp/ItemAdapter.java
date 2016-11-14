@@ -1,6 +1,7 @@
 package com.example.joel.grandetravelapp;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,22 +27,55 @@ public class ItemAdapter extends ArrayAdapter<PackageItem> {
         //Create view from xml
         View v = LayoutInflater.from(getContext()).inflate(R.layout.row_layout, parent, false);
 
+        //Set Fonts
+        //Typeface typeface= Typeface.createFromAsset(getContext().getAssets(),"fonts/wingding.ttf");
+        Typeface typeface= Typeface.createFromAsset(getContext().getAssets(),"fonts/fontawesome-webfont.ttf");
+
+        TextView textViewRatingFull=(TextView)v.findViewById(R.id.textViewPackageRatingFull);
+        textViewRatingFull.setTypeface(typeface);
+        TextView textViewRatingEmpty=(TextView)v.findViewById(R.id.textViewPackageRatingEmpty);
+        textViewRatingEmpty.setTypeface(typeface);
+
+
         //Get resources
         TextView tvPackageIndex = (TextView) v.findViewById(R.id.textViewPackageIndex);
         TextView tvPackageName = (TextView) v.findViewById(R.id.textViewPackageName);
         TextView tvPackageLocation = (TextView) v.findViewById(R.id.textViewPackageLocation);
         TextView tvPackageDescription = (TextView) v.findViewById(R.id.textViewPackageDescription);
-        TextView tvPackageRating = (TextView) v.findViewById(R.id.textViewPackageRating);
+
+        TextView tvPackageRatingFull = (TextView) v.findViewById(R.id.textViewPackageRatingFull);
+        TextView tvPackageRatingEmpty = (TextView) v.findViewById(R.id.textViewPackageRatingEmpty);
+
         TextView tvPackagePrice = (TextView) v.findViewById(R.id.textViewPackagePrice);
         Button btnPackageBook = (Button) v.findViewById(R.id.buttonPackageBook);
 
         //Fill in values in view
-        tvPackageIndex.setText(Integer.toString(position));
+        tvPackageIndex.setText("- " + Integer.toString(position+1) + " -");
         tvPackageName.setText(item.getName());
         tvPackageLocation.setText(item.getLocation());
         tvPackageDescription.setText(item.getDescription());
-        tvPackageRating.setText(Double.toString(item.getRating()));
-        tvPackagePrice.setText(Double.toString(item.getPrice()));
+
+
+        String star = "\uf005";
+        String ratingFullStars = "";
+        String ratingEmptyStars = "";
+
+
+        for (int i=0;i<(int)item.getRating();i++)
+        {
+            ratingFullStars += star;
+        }
+
+        for (int i=0;i<5-(int)item.getRating();i++)
+        {
+            ratingEmptyStars += star;
+        }
+
+        tvPackageRatingFull.setText(ratingFullStars);
+        tvPackageRatingEmpty.setText(ratingEmptyStars);
+
+
+        tvPackagePrice.setText("$"+String.format("%.0f", item.getPrice()));
         //btnPackageBook.setText(item.getName());
         btnPackageBook.setTag(item.getId());
 

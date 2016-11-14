@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 //import android.support.v4.app.FragmentTransaction;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.view.View;
@@ -35,22 +37,27 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.joel.grandetravelapp.FragmentMain;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Typeface travelFont;
 
-    private String GRANDE_TRAVEL_API_URL = "http://localhost:5000/Api/GetAllPackages";
+    private String GRANDE_TRAVEL_API_URL = "http://grandetravel20161114044910.azurewebsites.net/Api/GetAllPackages";
 
     private PackageItemDataSource itemDataSource;
+
+    private String shownItem = "Packages";
 
 
     public class AsyncPackage extends AsyncTask<Void, Void, JSONArray>
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         {
 
 
-            /*
+            //---------======== Using WEB API =======----------
 
             try
             {
@@ -92,31 +99,22 @@ public class MainActivity extends AppCompatActivity {
                 }
                 reader.close();
 
-                JSONObject packageData = new JSONObject(jsonData.toString());
-
-
-
-
-                //if (packageData.getInt("cod")!=200)
-                //{
-                //    return null;
-                //}
-
-
+                JSONArray packageData = new JSONArray(jsonData.toString());
 
                 return packageData;
             }
             catch (Exception e)
             {
-                errorMessage = e.toString();
                 e.printStackTrace();
                 return null;
             }
-            */
+
 
             //InputStream raw = getResources().openRawResource(R.raw.sampledata);
 
 
+            //---------======== Using JSON FILE =======----------
+            /*
             try
             {
                 BufferedReader reader =
@@ -145,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
             //JSONObject packageData = new JSONObject(byteArrayOutputStream.toString());;
-
+            */
         }
 
         //@Override
@@ -218,12 +216,49 @@ public class MainActivity extends AppCompatActivity {
 
 
                         //Refresh list
-                        ListView lv = (ListView) findViewById(R.id.lvPackageList);
-                        lv.invalidate();
+
+                        /*
+                        FragmentMain currentFragment = (FragmentMain)getFragmentManager().findFragmentById(R.id.fragment_main);
+
+                        android.app.FragmentManager fragMan = MainActivity.getActivity().getSupportFragmentManager()getSupportFragmentManager();
+                        FragmentManager fragmentManager =
+                        .getSupportFragmentManager();
+
+                        FragmentMain currentFragment = (FragmentMain) fragmentManager.findFragmentById(R.id.fragment_main);
+
+                        currentFragment.lv.deferNotifyDataSetChanged();
+
+                        currentFragment.refreshView();
+                        */
+
+/*
+                        FragmentTransaction tr = getFragmentManager().beginTransaction();
+                        tr.replace(R.id.fragment_main, yourFragmentInstance);
+                        tr.commit()
+
+                        Fragment frg = null;
+                        frg = getFragmentManager().findFragmentById(R.id.fragment_main);
+                        frg.
+*/
 
 
-                    }
-                    Toast.makeText(getApplicationContext(), jsonArray.length() + " items inserted to database!", Toast.LENGTH_LONG).show();
+
+
+                    } // --- END-FOR---
+
+                    //------=========== UPDATE VIEW ==========----------
+                    /*
+                    //FragmentManager fragmentManager = getFragmentManager();
+                    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    Fragment newFragment = new FragmentMain();
+
+                    transaction.replace(R.id.fragment_main, newFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    */
+
+                    Toast.makeText(getApplicationContext(), jsonArray.length() + " items updated.", Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "jsonObject is NULL!", Toast.LENGTH_LONG).show();
@@ -248,8 +283,9 @@ public class MainActivity extends AppCompatActivity {
 
             Button btnSyncDatabase = (Button) findViewById(R.id.btnSyncDatabase);
             LinearLayout syncIconContainer = (LinearLayout) findViewById(R.id.syncIconContainer);
-            //btnSyncDatabase.setVisibility(View.VISIBLE);
-            //syncIconContainer.setVisibility(View.GONE);
+
+            btnSyncDatabase.setVisibility(View.VISIBLE);
+            syncIconContainer.setVisibility(View.GONE);
 
         }
     }
@@ -317,20 +353,19 @@ public class MainActivity extends AppCompatActivity {
         btnSyncDatabase.setVisibility(View.GONE);
         syncIconContainer.setVisibility(View.VISIBLE);
 
-        /*
+
         //-----------=========== NORMAL ANIM ==========--------------
         Animation animation = AnimationUtils.loadAnimation(this.getApplication().getApplicationContext(), R.anim.syncanim);
         animation.setDuration(500);
         syncIcon.setAnimation(animation);
         syncIcon.startAnimation(animation);
-        */
-
 
         /*
         //Animation animation = AnimationUtils.loadAnimation(this.getApplication().getApplicationContext(), R.anim.syncanim);
         //animation.setDuration(5000);
         */
 
+        /*
         ViewPropertyAnimator animator = btnSyncDatabase.animate();
         animator.alpha(0f);
         animator.setDuration(1500);
@@ -348,6 +383,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         animator.start();
+        */
 
         /*
         syncIcon.animate()
@@ -417,6 +453,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         return;
 
 
@@ -440,4 +477,27 @@ public class MainActivity extends AppCompatActivity {
 
         return;
     }
+
+    public void btnShowContactUs(View v) {
+        Button btnShowContacts = (Button) v;
+        View contactsView = findViewById(R.id.contactsView);
+        View listView = findViewById(R.id.lvPackageList);
+
+        if (shownItem == "Packages") {
+
+            btnShowContacts.setText("Packages");
+            listView.setVisibility(View.GONE);
+            contactsView.setVisibility(View.VISIBLE);
+            shownItem="Contact Us";
+        }
+        else
+        {
+            btnShowContacts.setText("Contact Us");
+            listView.setVisibility(View.VISIBLE);
+            contactsView.setVisibility(View.GONE);
+            shownItem="Packages";
+
+        }
+    }
+
 }

@@ -9,6 +9,6 @@
 
         android:repeatCount="5"
         android:pivotX="50%"
-        android:pivotY="47%" >
+        android:pivotY="49%" >
     </rotate>
 </set>

@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    >
 
 
     <Button
@@ -47,9 +49,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="Contact"
-        android:id="@+id/btnShowContacts"
-        android:onClick="btnShowContacts"
+        android:text="Contact Us"
+        android:id="@+id/btnShowContactUs"
+        android:onClick="btnShowContactUs"
         android:background="@color/buttonblue"
         android:textColor="@color/white"
         android:textStyle="bold"

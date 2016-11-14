@@ -2,98 +2,187 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5px"
-    android:layout_marginBottom="5px"
+    android:padding="15dp"
+    android:layout_margin="15dp"
+    android:background="@color/buttonblue"
+
     >
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:background="@color/packageblue"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0px"
+        android:layout_marginBottom="0px"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@drawable/card_background"
+
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1."
-            android:id="@+id/textViewPackageIndex"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Package Name"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:id="@+id/textViewPackageName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Package Location"
-            android:id="@+id/textViewPackageLocation"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Package Description"
-            android:id="@+id/textViewPackageDescription"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Package Rating"
-            android:id="@+id/textViewPackageRating"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Package Price"
-            android:id="@+id/textViewPackagePrice"
-            android:textColor="@color/white"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Book Now!"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:id="@+id/buttonPackageBook"
-            android:background="@drawable/button_gradient"
-            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- 1 -"
+        android:id="@+id/textViewPackageIndex"
+        android:textColor="@color/darkgrey"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_gravity="center"
+        />
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/separatorwhite">
+            android:layout_gravity="center"
+            android:layout_width="560px"
+            android:layout_height="400px"
+            android:background="@drawable/pictureframe"
+            android:padding="5dp"
+
+
+            >
+
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_width="560px"
+        android:layout_height="400px"
+        android:background="@drawable/nothumbnail"
+
+
+        >
+    </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Package Name"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:background="@color/backgroundwhite"
+        android:id="@+id/textViewPackageName" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$999"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        android:id="@+id/textViewPackagePrice"
+        android:textColor="@color/gold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Package Description"
+        android:textStyle="italic"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/textViewPackageDescription"
+        android:textColor="@color/darkgrey"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+         >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location: "
+        android:id="@+id/textViewLocationText"
+        android:textColor="@color/lightgrey"
+        android:textStyle="italic"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alice Springs"
+        android:id="@+id/textViewPackageLocation"
+        android:textColor="@color/lightgrey"
+        android:textStyle="italic"
+    />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="60px"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#xf005;&#xf005;&#xf005;"
+        android:id="@+id/textViewPackageRatingFull"
+        android:textColor="@color/gold"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#xf021;&#xf021;"
+        android:id="@+id/textViewPackageRatingEmpty"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+
+    </LinearLayout>
+
+     <Button
+        android:layout_width="300px"
+        android:layout_height="35dp"
+        android:text="Book Now!"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        android:textAllCaps="false"
+        android:id="@+id/buttonPackageBook"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:background="@drawable/button_gradient"
+        android:layout_marginBottom="10dp"
+
+        />
+
+
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="3px"
+        android:layout_height="5px"
 
         android:background="@color/separatoryellow">
     </LinearLayout>
+
 </LinearLayout>

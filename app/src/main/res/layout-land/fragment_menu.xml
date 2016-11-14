@@ -22,14 +22,13 @@
         android:layout_height="30dp"
         android:background="@color/buttonblue"
         android:id="@+id/syncIconContainer"
-
+        android:visibility="gone"
         >
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="\@"
-            android:textSize="20dp"
+            android:layout_height="30dp"
+            android:text="&#xf021;"
             android:gravity="center"
             android:id="@+id/syncIcon"
             android:textColor="@color/white"
@@ -47,9 +46,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="Show Packages"
-        android:id="@+id/btnShowList"
-        android:onClick="btnShowList"
+        android:text="Contact Us"
+        android:id="@+id/btnShowContactUs"
+        android:onClick="btnShowContactUs"
         android:background="@color/buttonblue"
         android:textColor="@color/white"
         android:textStyle="bold"
