@@ -18,6 +18,7 @@ public class FragmentMain extends Fragment {
 
     public ItemAdapter ia=null;
     public ListView lv;
+    public String searchLocation="";
 
     LayoutInflater inflater;
     ViewGroup container;
@@ -31,6 +32,9 @@ public class FragmentMain extends Fragment {
 
 
         View mainView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        //TextView searchLocationTextView = (TextView)
+
 
         TextView textViewAddress=(TextView)mainView.findViewById(R.id.textViewAddress);
         TextView textViewPhone=(TextView)mainView.findViewById(R.id.textViewPhone);
@@ -55,11 +59,26 @@ public class FragmentMain extends Fragment {
         //Populate list view with items
         PackageItemDataSource itemDataSource = new PackageItemDataSource(this.getActivity().getApplicationContext());
         itemDataSource.open();
-        List<PackageItem> actualItems = itemDataSource.getAll();
+
+        List<PackageItem> actualItems;
+        //actualItems = itemDataSource.getAll();
+        if (searchLocation==null ) {
+            actualItems = itemDataSource.getAll();
+        }
+        else if (searchLocation == "")
+        {
+            actualItems = itemDataSource.getAll();
+        }
+        else {
+            actualItems = itemDataSource.getAllByLocation(searchLocation);
+        }
+
         itemDataSource.close();
 
         ia = new ItemAdapter(this.getActivity().getApplicationContext(), (ArrayList) actualItems);
         lv.setAdapter(ia);
+
+        refreshView();
 
 
 
@@ -78,7 +97,16 @@ public class FragmentMain extends Fragment {
         //Populate list view with items
         PackageItemDataSource itemDataSource = new PackageItemDataSource(this.getActivity().getApplicationContext());
         itemDataSource.open();
-        List<PackageItem> actualItems = itemDataSource.getAll();
+
+        List<PackageItem> actualItems;
+        //actualItems = itemDataSource.getAll();
+        if (searchLocation==null || searchLocation == "") {
+            actualItems = itemDataSource.getAll();
+        }
+        else {
+            actualItems = itemDataSource.getAllByLocation(searchLocation);
+        }
+
         itemDataSource.close();
 
         ia = new ItemAdapter(this.getActivity().getApplicationContext(), (ArrayList) actualItems);
@@ -86,5 +114,10 @@ public class FragmentMain extends Fragment {
 
 
         ia.notifyDataSetChanged();
+    }
+
+    public void setSearchLocation(String location)
+    {
+        searchLocation = location;
     }
 }

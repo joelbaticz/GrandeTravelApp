@@ -114,6 +114,40 @@ public class PackageItemDataSource {
         return items;
     }
 
+    public List<PackageItem> getAllByLocation(String location){
+
+        List<PackageItem> items = new ArrayList<>();
+
+        String whereClause = PackageItemSQLiteOpenHelper.COLUMN_LOCATION + " LIKE ?";
+        String[] whereArgs = new String[] {
+                "%"+location+"%"
+        };
+
+        Cursor cursor = database.query(PackageItemSQLiteOpenHelper.TABLE_PACKAGEITEM,
+                itemColumns,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+
+
+
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast())
+        {
+            items.add(cursorToItem(cursor));
+
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return items;
+    }
+
+    /*
     private int id;
     private String name;
     private String thumbnailUrl;
@@ -124,6 +158,7 @@ public class PackageItemDataSource {
     private int providerId;
     private double rating;
     private int numberOfFeedbacks;
+    */
 
     public PackageItem cursorToItem(Cursor cursor)
     {

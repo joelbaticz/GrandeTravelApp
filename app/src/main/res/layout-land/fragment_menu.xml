@@ -68,6 +68,40 @@
         android:background="@color/separatoryellow">
     </LinearLayout>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Sydney"
+        android:textColor="@color/white"
+        android:background="@color/buttonlightblue"
+
+        android:id="@+id/editTextLocation" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Search"
+        android:id="@+id/btnSearch"
+        android:onClick="btnSearch"
+        android:background="@color/buttonblue"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/separatorwhite">
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="@color/separatoryellow">
+    </LinearLayout>
+
 
 
 </LinearLayout>

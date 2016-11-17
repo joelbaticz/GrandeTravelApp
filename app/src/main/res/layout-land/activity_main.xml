@@ -42,12 +42,14 @@
             android:name="com.example.joel.grandetravelapp.FragmentMenu"
         />
 
-        <fragment
+
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/fragment_main"
-            android:name="com.example.joel.grandetravelapp.FragmentMain"
-        />
+            />
+
     </LinearLayout>
 
 </LinearLayout>

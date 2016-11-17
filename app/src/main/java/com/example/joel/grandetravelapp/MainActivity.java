@@ -308,6 +308,8 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        btnSearch(findViewById(R.id.btnSearch));
+
 /*
 
 
@@ -500,4 +502,60 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void btnSearch(View v)
+    {
+        TextView editTextLocation = (TextView) findViewById(R.id.editTextLocation);
+
+        String searchLocation = editTextLocation.getText().toString();
+
+
+        //Do the change
+
+        android.app.FragmentManager fragmentManager = getFragmentManager();
+
+        //Get orientation
+        Configuration config = getResources().getConfiguration();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        //Fragment newFragment = new FragmentMain();
+        FragmentMain newFragment = new FragmentMain();
+
+        newFragment.setSearchLocation(searchLocation);
+
+        transaction.replace(R.id.fragment_main, newFragment);
+        transaction.commit();
+
+        //newFragment.refreshView();
+
+        Toast.makeText(this.getApplicationContext(),"Fragment refreshed", Toast.LENGTH_LONG).show();
+
+                   /*
+                    //FragmentManager fragmentManager = getFragmentManager();
+                    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    Fragment newFragment = new FragmentMain();
+
+                    transaction.replace(R.id.fragment_main, newFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    */
+
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            btnSearch(findViewById(R.id.btnSearch));
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            btnSearch(findViewById(R.id.btnSearch));
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
+
+
